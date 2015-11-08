@@ -5479,12 +5479,16 @@ ul.iconic-list li a:hover, ul.iconic-list li.active a {
     font-size: 20px;
 }
 
-html.login {
+html.enroll, html.enroll_success {
     min-height: 100%;
 }
 
-body.login {
+html.enroll body{
     background: radial-gradient(farthest-side ellipse at 10% 0, rgba(96, 189, 160, 1), rgba(204, 204, 204, 0.85) 60%, rgba(92, 159, 178, 1) 120%);
-    /*background: -webkit-radial-gradient(10% 0, farthest-side ellipse, rgba(74, 121, 147, 0.89), rgba(204, 204, 204, 0.85) 60%, rgba(185, 135, 131, 0.87) 120%);
-    background: -moz-radial-gradient(10% 0, farthest-side ellipse, rgba(74, 121, 147, 0.89), rgba(204, 204, 204, 0.85) 60%, rgba(185, 135, 131, 0.87) 120%);*/
+    background: -webkit-radial-gradient(farthest-side ellipse at 10% 0, rgba(96, 189, 160, 1), rgba(204, 204, 204, 0.85) 60%, rgba(92, 159, 178, 1) 120%);
+    background: -moz-radial-gradient(farthest-side ellipse at 10% 0, rgba(96, 189, 160, 1), rgba(204, 204, 204, 0.85) 60%, rgba(92, 159, 178, 1) 120%);
+}
+
+html.enroll_success body{
+    background-color: rgb(107, 197, 164);
 }
