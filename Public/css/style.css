@@ -158,7 +158,6 @@ hr {
 }
 
 .form-signin a, .form-signin a:hover {
-    color: #6bc5a4;
 }
 
 .form-signin a:hover {
@@ -3179,7 +3178,7 @@ div.tagsinput span.tag a {
 }
 
 .error-wrapper {
-    margin-top: 15%;
+    margin-top: 5%;
 }
 
 .error-wrapper h2 {

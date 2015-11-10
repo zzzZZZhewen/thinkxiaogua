@@ -15,10 +15,8 @@ $(document).ready(function () {
     $('#enroll_btn').on('click', function (e) {
         e.preventDefault();
 
-
-        $.post('',
+        $.post('enroll',
             {
-                //enroll_act: 'qiyueqinglv2015',
                 enroll_name: $enroll_name.val(),
                 enroll_sex: $enroll_sex.val(),
                 enroll_age: $enroll_age.val(),
@@ -29,12 +27,11 @@ $(document).ready(function () {
                 enroll_qq: $enroll_qq.val(),
                 enroll_hobby: $enroll_hobby.val(),
                 enroll_intro: $enroll_intro.val(),
-                enroll_wechat: $enroll_wechat.val(),
-                //enroll_jpg:''
+                enroll_wechat: $enroll_wechat.val()
             },
             function (data) {
                 if (data['res'] == 1) {
-                    window.location.href='?status=success';
+                    $('#enroll_form').submit();
 
                 } else if (data['res'] == 0) {
                     $('#error_text').text(data['error']);
