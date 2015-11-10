@@ -93,4 +93,54 @@ class AppController extends Controller {
         $this->display();
     }
 
+    public function  enroll_show($page = 1, $length = 20) {
+        $Model = D('Enroll');
+        $count = $Model->count();
+        $page_count = floor($count / $length);
+        $page_count = ($count % $length) ? $page_count + 1 : $page_count;
+
+        $info = $Model->page($page, $length)->select();
+
+        $nav = array('prev' => '', 'next' => '');
+
+        if ($page != 1) {
+            $page_prev = $page - 1;
+            $nav['prev'] = "<li><a href=\"" . U('', "page={$page_prev}&length=$length") . "\">上一页</a></li>";
+        }
+
+        if ($page != $page_count) {
+            $page_next = $page + 1;
+            $nav['next'] = "<li><a href=\"" . U('', "page={$page_next}&length=$length") . "\">下一页</a></li>";
+        }
+        $this->assign('nav', $nav);
+        $this->assign('enroll', $info);
+
+        $this->display();
+    }
+
+    public function  enroll_show_last($page = 1, $length = 20) {
+        $Model = D('Enroll');
+        $count = $Model->count();
+        $page_count = floor($count / $length);
+        $page_count = ($count % $length) ? $page_count + 1 : $page_count;
+
+        $info = $Model->order('enroll_id desc')->page($page, $length)->select();
+
+        $nav = array('prev' => '', 'next' => '');
+
+        if ($page != 1) {
+            $page_prev = $page - 1;
+            $nav['prev'] = "<li><a href=\"" . U('', "page={$page_prev}&length=$length") . "\">上一页</a></li>";
+        }
+
+        if ($page != $page_count) {
+            $page_next = $page + 1;
+            $nav['next'] = "<li><a href=\"" . U('', "page={$page_next}&length=$length") . "\">下一页</a></li>";
+        }
+        $this->assign('nav', $nav);
+        $this->assign('enroll', $info);
+
+        $this->display('enroll_show');
+    }
+
 }

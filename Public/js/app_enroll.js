@@ -9,12 +9,19 @@ $(document).ready(function () {
         $enroll_qq = $('#enroll_qq'),
         $enroll_hobby = $('#enroll_hobby'),
         $enroll_intro = $('#enroll_intro'),
-        $enroll_wechat = $('#enroll_wechat');
+        $enroll_wechat = $('#enroll_wechat'),
+        $enroll_btn = $('#enroll_btn');
 
+    var lock = false;
 
-    $('#enroll_btn').on('click', function (e) {
+    $enroll_btn.on('click', function (e) {
         e.preventDefault();
 
+        if (lock) {
+            return;
+        }
+        lock = true;
+        $enroll_btn.prop('disabled', true);
         $.post('enroll',
             {
                 enroll_name: $enroll_name.val(),
@@ -32,8 +39,9 @@ $(document).ready(function () {
             function (data) {
                 if (data['res'] == 1) {
                     $('#enroll_form').submit();
-
                 } else if (data['res'] == 0) {
+                    lock = false;
+                    $enroll_btn.prop('disabled', false);
                     $('#error_text').text(data['error']);
                     $('#hint').trigger('click');
                 }
